@@ -1,0 +1,109 @@
+      <div id="footer" class="mt-5 p-2">
+        <div class="row" style="margin: 0;">
+          <div class="col-2 d-none d-md-inline">NMDownloader</div>
+          <div class="col-5 col-md-2">
+            <ul style="list-style: none;">
+              <li><a href="/movies">Films</a></li>
+              <li><a href="/series">Séries</a></li>
+              <li>Documentaires (bientôt !)</li>
+            </ul>
+          </div>
+          <div class="col-5 col-md-2">
+            <ul style="list-style: none;">
+              <li><a href="/about">A propos</a></li>
+              <li><a href="https://www.facebook.com/Chatbot-NMD-308206656383640" target="_blank"><i class="fab fa-facebook-f fa-lg"></i></a></li>
+            </ul>
+          </div>
+          <div class="col-12 col-md-5">
+            Recevoir notre newsletter
+            <form method="POST" action="/add-newsletter" class="mt-1">
+              <div class="input-group">
+                <!-- <div class="input-group-prepend">
+                  <span class="input-group-text">Nom & Email</span>
+                </div> -->
+                <!-- <input type="text" name="name" aria-label="First name" placeholder="nom" class="form-control" required> -->
+                <input type="email" name="email" aria-label="Last name" placeholder="email" class="form-control" required>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="submit">S'inscrire</button>
+                </div>
+              </div>
+            </form>
+            {% if request.args.get('newsletter_status') == 'success' %}
+            <div class="alert alert-success" role="alert">
+              Email ajouté !
+            </div>
+            {% endif %}
+            {% if request.args.get('newsletter_status') == 'error' %}
+            <div class="alert alert-danger" role="alert">
+              Erreur !
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      
+      <script src="../static/src/js/script.js"></script>
+      <script src="../static/src/js/jquery.countdown.min.js"></script>
+      <!-- <script>
+        $(function(){
+            $('#counter').countdown({
+                format: 'hh:mm:ss',
+                endTime: new Date('01/04/20 19:00:00'),
+                continuous: true,
+                timerEnd: function() { alert('Rechargez la page !'); },
+                image: "../static/src/images/digits.png"
+            });
+        });
+      </script> -->
+      <script src="https://kit.fontawesome.com/5ee3dd47c4.js" crossorigin="anonymous"></script>
+
+      <script>
+        function title_animation() {
+          anime.timeline({loop: false})
+          .add({
+            targets: '.ml5 .line',
+            opacity: [0.5,1],
+            scaleX: [0, 1],
+            easing: "easeInOutExpo",
+            duration: 700
+          }).add({
+            targets: '.ml5 .line',
+            duration: 600,
+            easing: "easeOutExpo",
+            translateY: (el, i) => (-0.625 + 0.625*2*i) + "em"
+          }).add({
+            targets: '.ml5 .ampersand',
+            opacity: [0,1],
+            scaleY: [0.5, 1],
+            easing: "easeOutExpo",
+            duration: 600,
+            offset: '-=600'
+          }).add({
+            targets: '.ml5 .letters-left',
+            opacity: [0,1],
+            translateX: ["0.5em", 0],
+            easing: "easeOutExpo",
+            duration: 600,
+            offset: '-=300'
+          });
+        }
+        
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+      <!-- <script src="https://pagination.js.org/dist/2.1.5/pagination.min.js"></script>
+      <script>
+        $('#pagination').pagination({
+          dataSource: data,
+          pageSize: 5,
+          showPrevious: false,
+          showNext: false,
+          callback: function(data, pagination) {
+              // template method of yourself
+              var html = template(data);
+              dataContainer.html(html);
+          }
+        })
+      </script> -->
+</body>
+</html>

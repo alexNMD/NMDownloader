@@ -1,0 +1,155 @@
+/*basic reset*/
+* {margin: 0; padding: 0;}
+
+body {
+    font-family: Aldrich;
+    color: #604637;
+}
+
+a {
+  color: #FE8081;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+  border-color: #FE8081;
+  background-color: #FE8081;
+}
+
+
+#footer {
+  width: 100%;
+  position: absolute;
+  background: #604637;
+  color: white;
+}
+#footer a {
+  color: white;
+}
+#footer a:hover {
+  color: #FE8081;
+}
+
+.page-link {
+  color: #604637;
+}
+.page-item.active .page-link {
+  background-color: #FE8081;
+  border-color: #FE8081;
+}
+
+.lecture {
+    font-family: Libre Baskerville;
+}
+
+.pagination ul {
+  justify-content: center;
+}
+
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #FE8081; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 18px; /* Increase font size */
+  }
+  
+  #myBtn:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
+  }
+
+
+  .ml5 {
+  position: relative;
+  font-weight: 300;
+  font-size: 4.5em;
+  color: #402d2d;
+}
+
+.ml5 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.1em;
+  padding-right: 0.05em;
+  padding-bottom: 0.15em;
+  line-height: 1em;
+}
+
+.ml5 .line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 3px;
+  width: 100%;
+  background-color: #402d2d;
+  transform-origin: 0.5 0;
+}
+
+.ml5 .ampersand {
+  font-family: Baskerville, serif;
+  font-style: italic;
+  font-weight: 400;
+  width: 1em;
+  margin-right: -0.1em;
+  margin-left: -0.1em;
+}
+
+.ml5 .letters {
+  display: inline-block;
+  opacity: 0;
+}
+
+
+/* text hover image fade in/out */
+.overlay-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+.img-container {
+  position: relative;
+}
+.img-container:hover .overlay {
+  opacity: 1;
+}
+
+.text-overlay {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.active-button {
+  background-color: #DFC4A2;
+  box-shadow: 3px 3px 2px black;
+}
+
+.action-button:active {
+  /* transform: translate(0px,5px);
+  -webkit-transform: translate(0px,5px);
+  border-bottom: 1px solid; */
+  background-color: red;
+}

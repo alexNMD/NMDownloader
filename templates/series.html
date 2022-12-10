@@ -1,0 +1,124 @@
+{% include 'header.html' %}
+    <!--<div class="container text-center">
+      <div class="row" style="justify-content: center;">
+        <h1 class="">Mise à jour dans</h1>
+        <div id="counter"></div>
+      </div>
+    </div> -->
+    <div class="container text-center" >
+      <h2 style="font-family: 'Monoton', cursive;" class="d-sm-none">NMDOWNLOADER</h2>
+      <h1 class="ml5 d-none d-sm-block">
+        <span class="text-wrapper">
+          <span class="line line1"></span>
+          <span class="letters letters-left" style="font-family: 'Monoton', cursive;">NMDOWNLOADER</span>
+          <span class="line line2"></span>
+        </span>
+      </h1>
+    </div>
+
+      <div class="container mt-3">
+        <div class="mb-5">
+          <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="change_interface">
+            <label class="custom-control-label" for="change_interface">Interface condensée</label>
+          </div>
+          <div class="form-row d-flex justify-content-center">
+                <!-- <form action="" method="GET" style="display: flex;">
+                    <div class="input-group mb-2 col p-0">
+                      <input type="text" name="search" class="form-control" value="{{ search }}" placeholder="Titre..." aria-label="Rechercher par titre" aria-describedby="button-addon2">
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">rechercher par titre</button>
+                      </div>
+                  </div>
+                </form> -->
+
+                
+                <!-- <form action="" method="GET">
+                  <div class="input-group mb-2 col p-0">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="submit">rechercher par genre</button>
+                    </div>
+                    <select class="custom-select" name="genre" id="inputGroupSelect04" aria-label="Example select with button addon">
+                      <option selected>Genre...</option>
+                      {% for genre in genres %}
+                        <option value="{{ genre['label'] }}">{{ genre['label'] }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </form> -->
+          </div>
+          <a id="newsletter_link" href="#footer">S'inscrire à la newsletter</a><br>
+          <a href="/movies">Accédez aux films !</a>
+        </div>
+
+        <div class="container text-center">
+          <!-- <h3 class="lecture"><strong>{{ data|length }}</strong> film(s) trouvé(s)</h3> -->
+          <h3>{{ pagination.info }}</h3>
+          {{ pagination.links }}
+
+          <!-- <p class="text-success">{{ active_link }} liens actifs</p> -->
+        </div>
+
+          <div class="row" id="UI_large">
+            {% for movie in data %}
+            <div class="col-6 col-sm-3 mt-1 mb-1">
+                <a href="/serie_views/{{ movie['_id'] }}" style="text-decoration: none; color: black;">
+                    <div class="card img-container">
+                      <!-- <p class="font-weight-light text-center lecture" style="margin: 0;">ajouté le {{ movie['added_at'].strftime('%d-%m-%Y') }}</p> -->
+                      {% if movie['Poster'] != "N/A" %}  
+                        <img src="{{ movie['Poster'] }}" class="card-img-top img-fluid " alt="Poster of movie" style="height:308px; width:255px">
+                      {% else %}
+                        <img src={{ url_for('static', filename = 'src/images/image-not-found.jpg') }} class="card-img-top img-fluid d-none d-sm-block" alt="image not found logo" style="height:308px; width:255px">
+                        {% endif %}
+                        <div class="card-body">
+                          <!-- {% if movie['status'] %}
+                            <span style="color: green;"><i class="fas fa-dot-circle"></i> actif</span>
+                          {% endif %}
+                          {% if not movie['status'] %}
+                            <span style="color: red;"><i class="far fa-dot-circle"></i> inactif</span>
+                          {% endif %} -->
+                          <!-- <p class="font-weight-light lecture" style="margin: 0em;"> {{ movie['Runtime'] }}</p> -->
+                          <h6 class="card-title">{{ movie['Title'] }}</h6>
+                          <p class="card-text d-none d-sm-block lecture">{{ movie['seasons']|length }} saison(s)</p>
+                        <!-- <a href="/serie_views?id={{ movie['_id'] }}" class="btn btn-primary btn-block">Voir !</a> -->
+                        </div>
+                    </div>
+                </a>
+            </div>
+              {% endfor %}
+          </div>
+          
+          <ul class="list-unstyled" id="UI_small" style="display: none;">
+            {% for movie in data %}
+            <a href="/serie_views/{{ movie['_id'] }}" style="text-decoration: none; color: black;">
+            <li class="media mb-2 p-2" style="background-color: #DFC4A2; box-shadow: 3px 3px 2px black;">
+                <div style="box-shadow: 2px 2px 1px black;">
+                  {% if movie['Poster'] != "N/A" %}  
+                    <img src="{{ movie['Poster'] }}" class="card-img-top img-fluid" alt="Poster of movie" style="width:100px; height: 116px;">
+                  {% else %}
+                    <img src={{ url_for('static', filename = 'src/images/image-not-found.jpg') }} class="card-img-top img-fluid" alt="image not found logo" style="width:100px; height: 116px;">
+                  {% endif %}
+                </div>
+              <div class="media-body ml-3">
+                <h5 class="mt-1">
+                <!-- {% if movie['status'] %}
+                  <span style="color: green;"><i class="fas fa-dot-circle"></i></span>
+                {% endif %}
+                {% if not movie['status'] %}
+                  <span style="color: red;"><i class="far fa-dot-circle"></i></span>
+                {% endif %} -->
+                {{ movie['Title'] }}</h5>
+                <p class="lecture">{{ movie['seasons']|length }} saison(s)</p>
+                  <!-- <p class="lecture d-none d-sm-block p-2">
+                    {{ movie['Plot'] }}
+                  </p>  -->
+              </div>
+            </li>
+          </a>
+            {% endfor %}
+          </div>
+          <div class="container text-center mt-3">
+            {{ pagination.links }}
+          </div>
+          <button onclick="topFunction()" id="myBtn" title="Go to top" style="display: block;"><i class="fas fa-chevron-up"></i></button>
+      {% include 'footer.html' %}

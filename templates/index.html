@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Home</title>
+</head>
+<style>
+  body {
+    height: 100%;
+  }
+</style>
+<body>
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">The NMDownloader</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <!-- <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li> -->
+            <li class="nav-item">
+              <!-- <a class="nav-link" href="/list">Liste des téléchargements</a> -->
+            </li>
+            <li class="nav-item">
+              <!-- <a class="nav-link" href="#">autres...</a> -->
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+    <div class="container-fluid text-center">
+      <a href="/">
+        <img src={{ url_for('static', filename = 'src/images/theNMDownloader_logo.jpg') }}  width="300" height="220" alt="logo">
+      </a>
+    </div>
+
+    <div class="container text-center mt-3">
+        <div id="content">
+        
+          <form action="/movies" method="get">
+            <!-- <input type="hidden" name="data" id="" value="films"> -->
+            <button style="border-color: #9e5b40; color: #9e5b40;" type="submit" class="btn mt-1">Parcourir les nouveautés</button>
+          </form>
+        </div>
+        <div id="loading" style="width: 120px; height: 20px; display: none; background: url(/static/src/images/ajax-loader.gif); cursor: wait;"></div>
+      
+    </div>
+</body>
+</html>
